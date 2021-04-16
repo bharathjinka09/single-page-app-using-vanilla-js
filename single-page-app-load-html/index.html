@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 
+	<title> Single Page Application - Load HTMl File </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="This single page application ">
+
+	<meta name="author" content="Code With Mark">
+	<meta name="authorUrl" content="http://codewithmark.com">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script> 
+
+
+</head>
+<body>
+
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Single Page Application</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link btn_menu" screen_name="home" href="#/home" >Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn_menu" screen_name="about" href="#/about">About</a>
+          </li>
+     
+          <li class="nav-item">
+            <a class="nav-link btn_menu" screen_name="contact" href="#/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container" style="padding-top:20px;">
+    <div class="row card ">
+
+    	<div class="screen_name text-center text-uppercase	" style="font-size: 70px;"></div>
+
+      <div class="col-lg-12	 screen_data"></div>
+
+    </div>
+  </div>
+
+
+<div style="display:none;" class="screens">
+	
+
+
+	
+</div> 
+
+
+
+	<script type="text/javascript">
+	$(document).ready(function($) 
+	{
+		$(document).find('.screen_data').load("screens/home.html");
+
+ 		$(document).on('click', '.btn_menu', function(event) 
+ 		{
+ 			event.preventDefault();
+
+ 			var screen_name = $(this).attr('screen_name'); 			
+
+ 			window.location.hash = '/'+screen_name;
+
+ 			$(document).find('.screen_name').html(screen_name);;
+
+ 			if(screen_name == "home")
+ 			{ 
+ 				$(document).find('.screen_data').load("screens/home.html");
+ 			}
+ 			else if(screen_name =="about")
+ 			{ 
+ 				$(document).find('.screen_data').load("screens/about.html"); 				
+			} 			 
+ 			else if(screen_name =="contact")
+ 			{
+ 				$(document).find('.screen_data').load("screens/contact.html");
+ 			}
+
+ 		});
+ 
+	});
+	</script>
+
+</body>
+</html>
